@@ -7,12 +7,14 @@ import java.io.UnsupportedEncodingException;
 
 import org.springframework.http.ResponseEntity;
 
+import com.khanna.weather.business.weather.result.WeatherResult;
+
 /**
  * @author khanna
  *
  */
 public interface WeatherApiService {
 
-	public ResponseEntity<String> getCountryWeather(String countryName) throws UnsupportedEncodingException;
+	public ResponseEntity<WeatherResult> getCountryWeather(String countryName) throws UnsupportedEncodingException;
 
 }

@@ -1,0 +1,4 @@
+1. Create Weather Result Object
+2. Parse meaningful value
+3. Create Model Bean for UI.
+4. Create Controller.

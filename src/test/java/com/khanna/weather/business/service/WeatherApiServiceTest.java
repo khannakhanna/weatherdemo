@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
+import com.khanna.weather.business.weather.result.WeatherResult;
+
 /**
  * @author khanna
  *
@@ -29,8 +31,9 @@ public class WeatherApiServiceTest {
 	public void getCountryWeatherWithValidValue() {
 		String countryName= "singapore";
 		try {
-			ResponseEntity<String> response = weatherApiService.getCountryWeather(countryName);
-			logger.info(response.getBody());
+			ResponseEntity<WeatherResult> response = weatherApiService.getCountryWeather(countryName);
+			logger.info(response.getBody().toString());
+			
 			assertEquals(200, response.getStatusCodeValue());
 		} catch (UnsupportedEncodingException e) {
 			logger.error(e.toString());
