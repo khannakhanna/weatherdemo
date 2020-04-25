@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.khanna.weather.business.weather.result.WeatherResult;
+
 @Service
 public class WeatherApiServiceImpl implements WeatherApiService {
 
@@ -20,7 +22,7 @@ public class WeatherApiServiceImpl implements WeatherApiService {
 	private String APP_ID;
 
 	@Override
-	public ResponseEntity<String> getCountryWeather(String countryName) throws UnsupportedEncodingException {
+	public ResponseEntity<WeatherResult> getCountryWeather(String countryName) throws UnsupportedEncodingException {
 		if (countryName == null) {
 			countryName = "United Kingdom";
 		}
@@ -28,7 +30,9 @@ public class WeatherApiServiceImpl implements WeatherApiService {
 		UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(API_URL).queryParam("q", name)
 				.queryParam("appid", APP_ID);
 		RestTemplate restTemplate = new RestTemplate();
-		return restTemplate.exchange(uriBuilder.toUriString(), HttpMethod.GET, null, String.class);
+		ResponseEntity<WeatherResult> response = restTemplate.exchange(uriBuilder.toUriString(), HttpMethod.GET, null,
+				WeatherResult.class);
+		return response;
 
 	}
 
