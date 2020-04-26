@@ -13,7 +13,7 @@ public class DateUtils {
 
 	public static String getDateText(Long dt) {
 		LocalDateTime dateTime = LocalDateTime.ofEpochSecond(dt, 0, ZoneOffset.UTC);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T' HH:mm:ss.SSS 'Z'", Locale.ENGLISH);
 		// return formatter.format(dateTime).toString();
 		return dateTime.toString();
 	}

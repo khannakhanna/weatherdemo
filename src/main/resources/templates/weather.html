@@ -2,38 +2,76 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Weather Portal</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-	<h1>Welcome to weather portal</h1>
-	<form action="/weather">
-		<input type="text" name="city" /> <input type="submit" value="submit">
-	</form>
+	<nav class="p-2 w-100 navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">Weather Portal</a>
+	</nav>
+	<div class="page-content">
+		<div class="main-header">
+			<p class="h1">Welcome to Weather Forecasting portal</p>
+		</div>
+		<div>
+			<form action="/weather">
+				<div class="form-group">
+					<label for="City">City</label> <input type="text"
+						class="form-control" name="city" placeholder="Enter city name" />
+				</div>
+				<input type="submit" class="btn btn-primary" value="Submit">
+			</form>
+		</div>
+		<hr />
+		<div class="container city-details">
+			<table class="table">
+				<tr>
+					<td class="vertical-heading">City</td>
+					<td th:text="${weather.cityName}">City</td>
+				</tr>
+				<tr>
+					<td class="vertical-heading">Country Code</td>
+					<td th:text="${weather.countryName}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="container-fluid weather-records">
+			<table class="table .table-responsive table-striped">
+				<caption>Weather details</caption>
+				<thead class="thead-dark">
+					<tr>
+						<th>Date</th>
+						<th>Condition</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tr th:each="daydetail : ${weather.dayDetails}">
+					<td th:text="${daydetail.date}"></td>
+					<td th:text="${daydetail.condition}"></td>
+					<td th:text="${daydetail.description}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-	<table>
-		<tr>
-			<td>City</td>
-			<td th:text="${weather.cityName}">City</td>
-		</tr>
-		<tr>
-			<td>Country Code</td>
-			<td th:text="${weather.countryName}"></td>
-		</tr>
-	</table>
 
-	<table>
-		<tr>
-			<th>Date</th>
-			<th>Condition</th>
-			<th>Description</th>
-		</tr>
-		<tr th:each="daydetail : ${weather.dayDetails}">
-			<td th:text="${daydetail.date}"></td>
-			<td th:text="${daydetail.condition}"></td>
-			<td th:text="${daydetail.description}"></td>
-		</tr>
-	</table>
 
+
+
+
+	<blockquote class="blockquote">
+		<footer>
+			Created by <a href="https://www.linkedin.com/in/gautam-khanna/" target="_blank">Gautam
+				Khanna</a>
+		</footer>
+	</blockquote>
 
 </body>
 </html>
