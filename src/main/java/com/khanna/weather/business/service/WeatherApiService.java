@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.springframework.http.ResponseEntity;
 
-import com.khanna.weather.business.weather.result.WeatherResult;
+import com.khanna.weather.business.weather.result.ExternalWeatherApiResult;
 
 /**
  * @author khanna
@@ -15,6 +15,6 @@ import com.khanna.weather.business.weather.result.WeatherResult;
  */
 public interface WeatherApiService {
 
-	public ResponseEntity<WeatherResult> getCountryWeather(String countryName) throws UnsupportedEncodingException;
+	public ResponseEntity<ExternalWeatherApiResult> getCountryWeather(String countryName) throws UnsupportedEncodingException;
 
 }
