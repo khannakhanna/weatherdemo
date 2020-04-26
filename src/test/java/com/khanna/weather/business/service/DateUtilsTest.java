@@ -13,7 +13,7 @@ public class DateUtilsTest {
 	
 	@Test
 	public void getDateTextTest() {
-		Long dt = 1587783600000L;
+		Long dt = 1587859200L;
 		
 		String text=DateUtils.getDateText(dt);
 		logger.info(text);
